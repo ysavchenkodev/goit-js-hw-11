@@ -4,28 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Java Script Home-Work 10</title>
+    <title>Java Script Home-Work 11</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header class="header">
-      <div class="container">
-        <nav class="nav">
-          <a class="nav-logo" href="./index.html" aria-label="Site logo">
-            <svg class="nav-logo-icon" width="100" height="30">
-              <use href="{=$icon-path}"></use>
-            </svg>
-          </a>
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="./1-timer.html">Timer</a>
-            </li>
-            <li class="nav-item">
-              <a href="./2-snackbar.html">Snackbar</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <div class="loader loader-clock" id="loader"></div>
+    <form class="form">
+      <label>
+        <input
+          type="text"
+          name="search-text"
+          placeholder="Search images..."
+          required
+        />
+      </label>
+      <button type="submit">Search</button>
+    </form>
+    <ul class="gallery"></ul>
+
+    <script src="./main.js" type="module"></script>
   </body>
 </html>
