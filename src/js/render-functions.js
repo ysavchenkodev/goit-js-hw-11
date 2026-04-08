@@ -73,7 +73,6 @@ export function renderGallery(element, data) {
       captionsData: 'alt',
       captionDelay: 250,
     });
-    return;
   }
 
   lightbox.refresh();
