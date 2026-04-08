@@ -14,7 +14,7 @@ const refs = {
 
 //*  ======================================================
 
-ShowLargeImg();
+
 refs.formElem.addEventListener('submit', handleFormElemSubmit);
 
 function handleFormElemSubmit(event) {
@@ -37,7 +37,6 @@ function handleFormElemSubmit(event) {
                 return;
             }
            toMakeMarkup(refs.listItemElem, res.hits)
-            refresh();
         }).catch((error) => {
             hideLoader(refs.loader);
             somethingWrong();

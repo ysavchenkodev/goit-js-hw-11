@@ -7,7 +7,7 @@ import "izitoast/dist/css/iziToast.min.css";
 //*  ======================================================
 
 export function toMarkup({ id, comments, views, downloads, likes, largeImageURL, webformatURL, tags }) {
-
+    ShowLargeImg()
     return `<li data-id=${id} class="gallery-card">
     <a href="${largeImageURL}">
   <img
@@ -66,16 +66,11 @@ export function somethingWrong() {
 let lightbox;
 export function ShowLargeImg() {
     lightbox = new simplelightbox('.gallery a', {
-      captionsData: 'alt',
-      captionDelay: 250,
-    })
+        captionsData: 'alt',
+        captionDelay: 250,
+    });
+    lightbox.refresh()
 };
-
-export function refresh() {
-    if (lightbox) { lightbox.refresh() }
-    else { somethingWrong() };
-};
-
 //*  ======================================================
 
  export function clearGallery(element) {
