@@ -37,10 +37,11 @@ function handleFormElemSubmit(event) {
                 return;
             }
            toMakeMarkup(refs.listItemElem, res.hits)
+       }).then((res) => {
+            ShowLargeImg()
         }).catch((error) => {
-            hideLoader(refs.loader);
             somethingWrong();
-        })
+        }).finally(hideLoader(refs.loader))
 };
 
 
