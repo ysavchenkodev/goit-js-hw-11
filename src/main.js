@@ -1,6 +1,6 @@
 //*  ======================================================
 
-import {toMakeMarkup, notFoundImage,somethingWrong, clearGallery, showLoader, hideLoader, initLightbox, refreshLightbox} from "./js/render-functions";
+import { notFoundImage,somethingWrong, clearGallery, showLoader, hideLoader, renderGallery} from "./js/render-functions";
 import { getImagesByQuery } from "./js/pixabay-api";
 import 'pure-css-loader/dist/css-loader.css';
 
@@ -14,7 +14,7 @@ const refs = {
 
 //*  ======================================================
 
-initLightbox()
+
 refs.formElem.addEventListener('submit', handleFormElemSubmit);
 
 function handleFormElemSubmit(event) {
@@ -35,8 +35,7 @@ function handleFormElemSubmit(event) {
                 clearGallery(refs.listItemElem);
                 return;
             }
-           toMakeMarkup(refs.listItemElem, res.hits)
-           refreshLightbox();
+           renderGallery(refs.listItemElem, res.hits)
        }).catch((error) => {
             somethingWrong();
         }).finally(() => {

@@ -1,5 +1,5 @@
 //*  ======================================================
-import simplelightbox from 'simplelightbox';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
@@ -65,19 +65,18 @@ export function somethingWrong() {
 
 let lightbox = null;
 
-export function initLightbox() {
-  if (lightbox) return;
+export function renderGallery(element, data) {
+  element.innerHTML = toTotalmarkup(data);
 
-  lightbox = new simplelightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-}
-
-export function refreshLightbox() {
-  if (lightbox) {
-      lightbox.refresh();  
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
+    return;
   }
+
+  lightbox.refresh();
 }
 //*  ======================================================
 
@@ -94,9 +93,6 @@ export function refreshLightbox() {
 
 //*  ======================================================
 
-export function toMakeMarkup(element, data) {
-    element.innerHTML = toTotalmarkup(data);
-};
 
 //*  ======================================================
 
