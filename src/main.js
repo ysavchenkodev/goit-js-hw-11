@@ -1,6 +1,6 @@
 //*  ======================================================
 
-import {toMakeMarkup, notFoundImage, ShowLargeImg , refresh, somethingWrong, clearGallery, showLoader, hideLoader} from "./js/render-functions";
+import {toMakeMarkup, notFoundImage,somethingWrong, clearGallery, showLoader, hideLoader, initLightbox, refreshLightbox} from "./js/render-functions";
 import { getImagesByQuery } from "./js/pixabay-api";
 import 'pure-css-loader/dist/css-loader.css';
 
@@ -14,7 +14,7 @@ const refs = {
 
 //*  ======================================================
 
-
+initLightbox()
 refs.formElem.addEventListener('submit', handleFormElemSubmit);
 
 function handleFormElemSubmit(event) {
@@ -29,7 +29,6 @@ function handleFormElemSubmit(event) {
     showLoader(refs.loader)
     getImagesByQuery(objFormData.searchImg)
        .then((res) => {
-            hideLoader(refs.loader);
             const len = res.hits.length
             if (len === 0) {
                 notFoundImage();
@@ -37,11 +36,12 @@ function handleFormElemSubmit(event) {
                 return;
             }
            toMakeMarkup(refs.listItemElem, res.hits)
-       }).then((res) => {
-            ShowLargeImg()
-        }).catch((error) => {
+           refreshLightbox();
+       }).catch((error) => {
             somethingWrong();
-        }).finally(hideLoader(refs.loader))
+        }).finally(() => {
+            hideLoader(refs.loader) 
+        })
 };
 
 

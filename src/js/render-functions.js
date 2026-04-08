@@ -63,13 +63,22 @@ export function somethingWrong() {
 
 //*  ======================================================
 
-export function ShowLargeImg() {
-    const lightbox = new simplelightbox('.gallery a', {
-        captionsData: 'alt',
-        captionDelay: 250,
-    });
-    lightbox.refresh()
-};
+let lightbox = null;
+
+export function initLightbox() {
+  if (lightbox) return;
+
+  lightbox = new simplelightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
+}
+
+export function refreshLightbox() {
+  if (lightbox) {
+      lightbox.refresh();  
+  }
+}
 //*  ======================================================
 
  export function clearGallery(element) {
