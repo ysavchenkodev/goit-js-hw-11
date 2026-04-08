@@ -69,7 +69,7 @@ export function renderGallery(element, data) {
   element.innerHTML = toTotalmarkup(data);
 
   if (!lightbox) {
-    lightbox = new SimpleLightbox('.gallery a', {
+    lightbox = new SimpleLightbox(element.querySelectorAll('a'), {
       captionsData: 'alt',
       captionDelay: 250,
     });
