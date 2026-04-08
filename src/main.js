@@ -1,6 +1,6 @@
 //*  ======================================================
 
-import {toTotalmarkup, notFoundImage, ShowLargeImg , refresh, somethingWrong, clearGallery, showLoader, hideLoader} from "./js/render-functions";
+import {toMakeMarkup, notFoundImage, ShowLargeImg , refresh, somethingWrong, clearGallery, showLoader, hideLoader} from "./js/render-functions";
 import { getImagesByQuery } from "./js/pixabay-api";
 import 'pure-css-loader/dist/css-loader.css';
 
@@ -23,6 +23,9 @@ function handleFormElemSubmit(event) {
     const objFormData = {
         searchImg: formData.get('search-text'),
     };
+    clearGallery(refs.listItemElem)
+    const len = objFormData.searchImg.length;
+    if (len === 0) return;
     showLoader(refs.loader)
     getImagesByQuery(objFormData.searchImg)
        .then((res) => {
@@ -30,10 +33,10 @@ function handleFormElemSubmit(event) {
             const len = res.hits.length
             if (len === 0) {
                 notFoundImage();
-                clearGallery(refs.listItemElem)
+                clearGallery(refs.listItemElem);
                 return;
             }
-            refs.listItemElem.innerHTML = toTotalmarkup(res.hits)
+           toMakeMarkup(refs.listItemElem, res.hits)
             refresh();
         }).catch((error) => {
             hideLoader(refs.loader);

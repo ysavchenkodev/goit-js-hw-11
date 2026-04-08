@@ -72,7 +72,8 @@ export function ShowLargeImg() {
 };
 
 export function refresh() {
-    lightbox.refresh()
+    if (lightbox) { lightbox.refresh() }
+    else { somethingWrong() };
 };
 
 //*  ======================================================
@@ -88,4 +89,11 @@ export function refresh() {
     loader.classList.remove('is-active');
 }
 
+//*  ======================================================
+
+export function toMakeMarkup(element, data) {
+    element.innerHTML = toTotalmarkup(data);
+};
+
+//*  ======================================================
 
