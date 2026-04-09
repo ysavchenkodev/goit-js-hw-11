@@ -66,14 +66,10 @@ export function somethingWrong() {
 let lightbox = null;
 
 export function renderGallery(element, data) {
-  if (!element.hasAttribute('data-gallery')) {
-    element.setAttribute('data-gallery', '');
-  }
-
   element.innerHTML = toTotalmarkup(data);
 
   if (!lightbox) {
-    lightbox = new SimpleLightbox('[data-gallery] a', {
+    lightbox = new SimpleLightbox('.gallery a', {
       captionsData: 'alt',
       captionDelay: 250,
     });
