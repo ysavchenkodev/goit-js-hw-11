@@ -66,6 +66,10 @@ export function somethingWrong() {
 let lightbox = null;
 
 export function renderGallery(element, data) {
+  if (!element.hasAttribute('data-gallery')) {
+    element.setAttribute('data-gallery', '');
+  }
+
   element.innerHTML = toTotalmarkup(data);
 
   if (!lightbox) {
